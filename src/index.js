@@ -19,5 +19,20 @@ window
         responseJson.data.forEach((item) => {
             console.log(item.name);
 
-            
+            // crear imagen
+            const imagen = document.createElement('img');
+
+            // crear titulo
+            const titulo = document.createElement('h2');
+
+            // crear precio
+            const precio = document.createElement('div');
+
+            // creamos su contenedor
+            const container = document.createElement('div');
+            container.append(imagen, titulo, precio);
+
+            todosLosItems.push(container);
+        });
+        document.body.append(...todosLosItems);
     });
