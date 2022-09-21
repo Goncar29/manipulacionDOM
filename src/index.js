@@ -9,6 +9,16 @@ const baseurl = 'https://platzi-avo.vercel.app'
 
 const appNode = document.querySelector('#app')
 
+// API de internacionalizacion "Intl"
+const formatPrice = (price) =>{
+    const newPrice = new window.Intl.NumberFormat('es-UY', {
+        style: "currency", // Elijo tipo "moneda"
+        currency: "USD", // Aqui moneda a usar 
+    }).format(price); // aqui le damos formato al precio recibido
+    
+    return newPrice; // devolvemos el nuevo formato de moneda
+};
+
 // web api
 // conectarnos el server
 window
@@ -33,10 +43,10 @@ window
             titulo.textContent = item.name
 
             // crear precio
-            const precio = document.createElement('div');            titulo.className = "text-lg";
+            const precio = document.createElement('div');
             precio.className = "text-gray-600";
-            precio.textContent = item.price;
-            
+            precio.textContent = formatPrice(item.price);
+
             // wrap precio y titulo
             const precioYTitulo = document.createElement('div');
             precioYTitulo.className = "text-center md:text-left";
